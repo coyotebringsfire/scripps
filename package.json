@@ -4,6 +4,7 @@
   "description": "word speller for Amazon Echo",
   "main": "index.js",
   "scripts": {
+    "zip": "npm install && rm -f scripps.zip && zip -r scripps.zip index.js node_modules",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
