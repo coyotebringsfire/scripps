@@ -39,13 +39,13 @@ exports.handler = app.lambda();
 
 function Spell(intent, response) {
     var cardTitle = intent.name,
-        word=intent.slots.Word, speechOutput=word.split('').join(' ');
+        word=intent.slots.Word, speechOutput=word+" "+word.split('').join(' ')+" "+word;
     response.shouldEndSession(true);
     response.say(speechOutput).send();
     response.card(cardTitle, speechOutput);
 }
 
 function sendWelcomeResponse(response) {
-    var welcomeOutput="just say ask me the word you want me to spell";
+    var welcomeOutput="just ask to spell the word you want";
     response.say(welcomeOutput).send();
 }
