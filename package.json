@@ -20,5 +20,8 @@
   "bugs": {
     "url": "https://github.com/coyotebringsfire/scripps/issues"
   },
-  "homepage": "https://github.com/coyotebringsfire/scripps"
+  "homepage": "https://github.com/coyotebringsfire/scripps",
+  "dependencies": {
+    "alexa-app": "^2.0.0"
+  }
 }
