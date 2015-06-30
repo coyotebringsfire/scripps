@@ -4,15 +4,15 @@ var app = new alexa.app();
 app.intent('Spell',
     {
         "slots":{"Word":"LITERAL"}, 
-        "utterances":[ "Spell {Word}", "spell {Word} for me" ]
+        "utterances":[ "Spell {Word}", "Spell {Word} for me" ]
     },
     function(request,response) {
-        console.log("request\n%j", request);
-        console.log("onIntent requestId=" + request.requestId
+        console.log("request\n%j", request.data.request);
+        console.log("onIntent requestId=" + request.data.request.requestId
                     + ", sessionId=" + request.sessionId);
 
-        var intent = request.intent,
-            intentName = request.intent.name;
+        var intent = request.data.request.intent,
+            intentName = intent.name;
 
         // Dispatch to your skill's intent handlers
         console.log("intentName %s", intentName);
@@ -28,6 +28,7 @@ app.launch(function(request,response) {
     console.log("request\n%j", request);
     console.log("onLaunch requestId=" + request.requestId
                 + ", sessionId=" + request.sessionId);
+    response.say("testing scripps response").send();
     // Dispatch to your skill's launch.
     sendWelcomeResponse(response);
     // Because this is an async handler
@@ -41,6 +42,7 @@ function Spell(intent, response) {
     var cardTitle = intent.name,
         word=intent.slots.Word, speechOutput=word+" "+word.split('').join(' ')+" "+word;
     response.shouldEndSession(true);
+    console.log("saying %s", word.split('').join(' '));
     response.say(speechOutput).send();
     response.card(cardTitle, speechOutput);
 }
