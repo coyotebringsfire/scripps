@@ -1,5 +1,6 @@
 var alexa = require('alexa-app'),
-    wordList = require('word-list-json');
+    wordList = require('word-list-json'),
+    fs=require('fs');
 
 var app = new alexa.app(), utterances_wordList=wordList.join('|');
 app.intent('Spell',
@@ -36,7 +37,7 @@ app.launch(function(request,response) {
     return false;
 });
 
-console.log("%j", JSON.parse(app.schema()));
+//console.log("%j", JSON.parse(app.schema()));
 //console.log("%s", app.utterances());
 // Connect to lambda
 exports.handler = app.lambda();
@@ -53,4 +54,9 @@ function Spell(intent, response) {
 function sendWelcomeResponse(response) {
     var welcomeOutput="just ask to spell the word you want";
     response.say(welcomeOutput).send();
+}
+
+if( require.main===module ) {
+    fs.writeFileSync("schema", app.schema());
+    fs.writeFileSync("utterances", app.utterances());
 }

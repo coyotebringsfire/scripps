@@ -1,1 +1,13 @@
-{"intents":[{"intent":"Spell","slots":[{"name":"Word","type":"LITERAL"}]}]}
+{
+   "intents": [
+      {
+         "intent": "Spell",
+         "slots": [
+            {
+               "name": "Word",
+               "type": "LITERAL"
+            }
+         ]
+      }
+   ]
+}
