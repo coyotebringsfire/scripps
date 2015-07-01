@@ -23,6 +23,7 @@
   },
   "homepage": "https://github.com/coyotebringsfire/scripps",
   "dependencies": {
-    "alexa-app": "^2.0.0"
+    "alexa-app": "^2.0.0",
+    "word-list-json": "^0.2.0"
   }
 }

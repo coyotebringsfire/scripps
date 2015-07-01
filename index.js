@@ -1,10 +1,11 @@
-var alexa = require('alexa-app');
+var alexa = require('alexa-app'),
+    wordList = require('word-list-json');
 
-var app = new alexa.app();
+var app = new alexa.app(), utterances_wordList=wordList.join('|');
 app.intent('Spell',
     {
         "slots":{"Word":"LITERAL"}, 
-        "utterances":[ "Spell {Word}", "Spell {Word} for me" ]
+        "utterances":[ "to spell {"+utterances_wordList+"|Word}" ]
     },
     function(request,response) {
         console.log("request\n%j", request.data.request);
@@ -35,6 +36,8 @@ app.launch(function(request,response) {
     return false;
 });
 
+console.log("%j", JSON.parse(app.schema()));
+//console.log("%s", app.utterances());
 // Connect to lambda
 exports.handler = app.lambda();
 
